@@ -1,3 +1,4 @@
+process.env.API_KEY
 import React from "react";
 import { useState, useEffect } from 'react';
 import { View, Text, ActivityIndicator ,StyleSheet} from 'react-native';
@@ -6,9 +7,9 @@ import { FlatList } from "react-native-gesture-handler";
 export function Weather() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
-  
+    const secretKey = process.env.MY_SECRET_KEY;
     useEffect(() => {
-      fetch('https://api.openweathermap.org/data/2.5/weather?lat=44.6476&lon=-63.5728&APPID=38a8397efeaa58d4f2a7bcca05752abe&units=metric')
+      fetch('https://api.openweathermap.org/data/2.5/weather?lat=44.6476&lon=-63.5728&APPID=secretKey&units=metric')
         .then(response => response.json())
         .then(data => {
           setData(data);
